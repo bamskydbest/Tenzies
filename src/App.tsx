@@ -1,7 +1,12 @@
 import "./App.css";
+import TenziGame from "./components/TenziGame";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <TenziGame />
+    </>
+  );
 }
 
 export default App;
