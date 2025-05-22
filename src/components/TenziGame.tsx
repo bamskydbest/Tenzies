@@ -70,7 +70,6 @@ export default function TenziGame() {
       setHasWon(true);
       setShowWinPopup(true);
       speak("Tenzie!");
-      // confetti();
       playWin();
       const id = setInterval(() => {
         confetti({
@@ -165,12 +164,14 @@ export default function TenziGame() {
         darkMode ? "bg-gray-900 text-white" : "bg-[#533B4D] text-[#FAE3C6]"
       } min-h-screen flex flex-col items-center justify-center px-4 py-8`}
     >
-      <button
-        onClick={() => setDarkMode((prev) => !prev)}
-        className="absolute top-4 right-4 px-4 py-2 rounded bg-[#F564A9] dark:bg-gray-700"
-      >
-        Toggle {darkMode ? "Light" : "Dark"} Mode
-      </button>
+      <div className="w-full flex justify-end px-4">
+        <button
+          onClick={() => setDarkMode((prev) => !prev)}
+          className="mt-2 px-4 py-2 rounded bg-[#F564A9] dark:bg-gray-700 text-white"
+        >
+          Toggle {darkMode ? "Light" : "Dark"} Mode
+        </button>
+      </div>
 
       {!name || editingName ? (
         <motion.div
@@ -287,10 +288,8 @@ export default function TenziGame() {
             </div>
           )}
 
-          <div className="flex justify-center mb-4 mt-8">
-            <div
-              className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-4 mt-8`}
-            >
+          <div className="overflow-x-auto">
+            <div className={`grid grid-cols-5 gap-4 mb-4 mt-8`}>
               {dice.map((die) => {
                 const heldValue = dice.find((d) => d.isHeld)?.value;
                 const isMismatch =
